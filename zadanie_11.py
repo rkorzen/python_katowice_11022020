@@ -1,6 +1,8 @@
-x = input("Podaj x")
+x = input("Podaj x")  # to chyba musi byc rzutowane
 y = input("Podaj y")
 
+x = int(x)
+y = int(y)
 
 if x < 0 or y < 0 or x > 100 or y > 100:
     print("Poza planszą")
