@@ -1,0 +1,29 @@
+Instalujemy git lokalnie
+nowe repozytorium tworzymy komenda:
+
+git init
+tworzymy plik .gitignore i zapisujemy w nim
+co chcemy ignorowac
+
+git add .  - dodajemy wszystkie nieignorowane pliki
+git commit -m "wiadomosc" - tworzymy commit
+
+jeśli mamy zdalne repozytorium
+np na github to mozemy wypchnac kod do repo
+
+git push -u origin master  - do tej galezi master
+
+jesli nie mamy zdalnego repo to trzeba je zalozyc
+np na github.com
+git remote -v add origin <adres repo z github>
+
+można sprawdzic czy masz zdalne repo:
+
+git remote -v
+
+# istniejace repo mozn sklonowac
+git clone <adres repo>
+
+jesli niemozesz zrobic commit czytaj wiadomosc
+od git
+git config --global user.email <twojemail>
