@@ -1,5 +1,5 @@
 x = int(input("Podaj x"))
-y = input(("Podaj y"))
+y = int(input("Podaj y"))
 
 
 if x < 0 or y < 0 or x > 100 or y > 100:
