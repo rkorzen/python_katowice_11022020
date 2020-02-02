@@ -1,0 +1,27 @@
+ Wolumin w stacji C nie ma etykiety.
+ Numer seryjny woluminu: 8C5A-2D9C
+
+ Katalog: C:\Users\kurs\workspace\dzien_4
+
+2020-02-02  15:04    <DIR>          .
+2020-02-02  15:04    <DIR>          ..
+2020-02-02  09:50    <DIR>          .pytest_cache
+2020-02-02  14:36               629 funkcje_jako_obiekty.py
+2020-02-02  15:04                 0 pliki.txt
+2020-02-02  13:59               563 przyklady.py
+2020-02-02  14:42               368 przyklady3.py
+2020-02-02  15:01                55 rekurencja.py
+2020-02-02  10:14               671 zad10.py
+2020-02-02  10:26               870 zad11.py
+2020-02-02  11:03               516 zad12.py
+2020-02-02  11:06               793 zad13.py
+2020-02-02  11:43               739 zad14.py
+2020-02-02  11:52               269 zad15.py
+2020-02-02  12:26               874 zad16.py
+2020-02-02  09:36               655 zad9.py
+2020-02-02  13:12               478 zadanie_z3.py
+2020-02-02  14:09               661 zadanie_z4.py
+2020-02-02  15:00               449 zadanie_z7.py
+2020-02-02  14:40               581 zadanie_z7a.py
+              17 plik(¢w)              9ÿ171 bajt¢w
+               3 katalog(¢w)  11ÿ264ÿ749ÿ568 bajt¢w wolnych

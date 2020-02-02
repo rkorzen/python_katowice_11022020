@@ -10,3 +10,4 @@ print("Samogłosek: ", licznik)
 
 # "A" in napis
 napis[1:]
+
