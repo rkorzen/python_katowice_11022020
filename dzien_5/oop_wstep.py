@@ -1,6 +1,8 @@
 import datetime
 
 class Osoba:
+    gatunek = "Homo Sapiens"
+
     def __init__(self, imie, rok_ur):
         self.imie = imie
         self.rok_ur = rok_ur
@@ -12,14 +14,9 @@ class Osoba:
         return f"<Osoba {self.imie}>"
 
 os1 = Osoba("Rafał", 1980)
-print(os1.podaj_wiek())
-print(Osoba.podaj_wiek(os1))
+os2 = Osoba("Ania", 1990)
 
-print(os1)
-os2 = Osoba("Ania")
-print(os2)
-print(dir(os1))
-print(type(os1))
-
-print(os1.imie)
-
+Osoba.gatunek = "Kosmita"
+os1.gatunek = "Człowiek rozumny"
+print(os1.gatunek)
+print(os2.gatunek)
