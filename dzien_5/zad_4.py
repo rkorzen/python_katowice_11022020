@@ -11,6 +11,13 @@ class Basket:
             total_price += be.count_price()
         return total_price
 
+    def generate_report(self):
+        report = "Produkty w koszyku:\n"
+        for be in self.products:
+            report += be.report()
+        report += f"W sumie: {self.count_total_price():.2f}"
+        return report
+
 
 class BasketEntry:
     def __init__(self, product, amount):
@@ -19,6 +26,10 @@ class BasketEntry:
 
     def count_price(self):
         return self.product.price * self.amount
+
+    def report(self):
+        return f'- {self.product.name} ({self.product.id}), cena: {self.product.price:.2f} x {self.amount}\n'
+
 
 class Product:
 
@@ -55,7 +66,16 @@ class TestBasket:
         product2 = Product(2, "Chleb", 3)
         basket.add_product(product, 2)
         basket.add_product(product2, 3)
-        basket.count_total_price() == 2 * 10 + 3 * 3
+        assert basket.count_total_price() == 2 * 10 + 3 * 3
+
+    def test_generate_report(self):
+        basket = Basket()
+        product = Product(1, "Woda", 10)
+        basket.add_product(product, 2)
+        expected = """Produkty w koszyku:
+- Woda (1), cena: 10.00 x 2
+W sumie: 20.00"""
+        assert basket.generate_report() == expected
 
 
 class TestProduct:
