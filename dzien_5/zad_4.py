@@ -18,6 +18,13 @@ class Basket:
         report += f"W sumie: {self.count_total_price():.2f}"
         return report
 
+    @classmethod
+    def with_products(cls, product_list):
+        basket = cls()
+        for p in product_list:
+            basket.add_product(p, 1)
+        return basket
+
 
 class BasketEntry:
     def __init__(self, product, amount):
@@ -77,6 +84,11 @@ class TestBasket:
 W sumie: 20.00"""
         assert basket.generate_report() == expected
 
+    def test_with_products(self):
+        pr1 = Product(1, "woda", 4)
+        pr2 = Product(2, "piwo", 4)
+        basket = Basket.with_products([pr1, pr2])
+        assert len(basket.products) == 2
 
 class TestProduct:
 
