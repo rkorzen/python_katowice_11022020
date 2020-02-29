@@ -15,14 +15,30 @@ def clean(text):
             text = text.replace(znak, "")
     return text
 
-with open(file_name, encoding="utf-8") as f:
-    text = f.read().lower()
-    for el in "\n\\:/":
-        text = text.replace(el, " ")
-    text = clean(text)
-    text = set(text.split())
-    dlugosci = {slowo: len(slowo) for slowo in text}
+def prepare_text(file_name):
+    with open(file_name, encoding="utf-8") as f:
+        text = f.read().lower()
+        for el in "\n\\:/":
+            text = text.replace(el, " ")
+        text = clean(text)
+    return text.split()
 
-    print(sorted(dlugosci.items(), key=lambda x: x[1], reverse=True))
+def longest_words(file_name):
+        text = prepare_text(file_name)
+        text = set(text.split())
+        dlugosci = {slowo: len(slowo) for slowo in text}
+
+        print(sorted(dlugosci.items(), key=lambda x: x[1], reverse=True))
 
 
+
+def most_frequent_words(file_name):
+    text = prepare_text(file_name)
+    frequencies = {word: text.count(word) for word in set(text) if len(word) > 3}
+    return sorted(frequencies.items(), key=lambda x: x[1], reverse=True)
+
+print(most_frequent_words(file_name))
+
+# with open(file_name, encoding='utf8') as f:
+#     text = f.read()
+#     print(text.count('dżuma'))
