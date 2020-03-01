@@ -29,8 +29,8 @@ def longest_words(file_name):
         dlugosci = {slowo: len(slowo) for slowo in text}
 
         print(sorted(dlugosci.items(), key=lambda x: x[1], reverse=True))
-
-
+["ala", "ala", "bela"]
+[("ala", 10), ("bela", 20)]
 
 def most_frequent_words(file_name):
     text = prepare_text(file_name)
@@ -38,6 +38,13 @@ def most_frequent_words(file_name):
     return sorted(frequencies.items(), key=lambda x: x[1], reverse=True)
 
 print(most_frequent_words(file_name))
+
+
+freq = {}
+
+for word in set(text):
+    if len(word) > 3:
+        freq[word] = text.count(word)
 
 # with open(file_name, encoding='utf8') as f:
 #     text = f.read()
