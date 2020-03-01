@@ -6,9 +6,9 @@ print(resp.status_code)
 print(resp.content)
 for currency in resp.json()[0]['rates']:
     print(currency['currency'], currency['mid'])
-
-https://www.metaweather.com/api/location/search/?query=warsaw
-https://www.metaweather.com/api/location/523920/
+#
+# https://www.metaweather.com/api/location/search/?query=warsaw
+# https://www.metaweather.com/api/location/523920/
 
 # python pogoda.py warsaw
 # Pogoda w warsaw:

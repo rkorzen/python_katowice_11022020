@@ -39,6 +39,7 @@ def get_location_weather(location_id):
     )
     return weather
 
+
 if __name__ == "__main__":
     print(sys.argv)
     location_name = sys.argv[1] if len(sys.argv) == 2 else "warsaw"
