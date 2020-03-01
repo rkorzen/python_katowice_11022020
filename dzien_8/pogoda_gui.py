@@ -1,3 +1,6 @@
+# pip install pyinstaller
+# pyinstaller --onefile --noconsole pogoda_gui.py
+
 import tkinter
 from pogoda import get_location_id, get_location_weather
 
