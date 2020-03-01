@@ -8,7 +8,6 @@ def create_connection(path):
         print("Connection to SQLite DB successful")
     except Error as e:
         print(f"The error '{e}' occurred")
-
     return connection
 
 def execute_query(connection, query):
@@ -20,13 +19,13 @@ def execute_query(connection, query):
     except Error as e:
         print(f"The error '{e}' occurred")
 
-create_users_table = """
-CREATE TABLE IF NOT EXISTS users (
+create_pracownicy_table = """
+CREATE TABLE IF NOT EXISTS pracownicy (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL,
-  age INTEGER,
-  gender TEXT,
-  nationality TEXT
+  imie TEXT NOT NULL,
+  nazwisko TEXT NOT NULL,
+  rok_ur INTEGER,
+  pensja REAL
 );
 """
 create_posts_table = """
@@ -59,69 +58,66 @@ CREATE TABLE IF NOT EXISTS likes (
 """
 
 
-connection = create_connection("db.sqlite")
-execute_query(connection, create_users_table)
-execute_query(connection, create_posts_table)
-execute_query(connection, create_comments_table)
-execute_query(connection, create_likes_table)
+connection = create_connection("pracownicy.sqlite")
+execute_query(connection, create_pracownicy_table)
+# execute_query(connection, create_posts_table)
+# execute_query(connection, create_comments_table)
+# execute_query(connection, create_likes_table)
 
-
-create_users = """
+#
+create_pracownicy = """
 INSERT INTO
-  users (name, age, gender, nationality)
+  pracownicy (imie, nazwisko, rok_ur, pensja)
 VALUES
-  ('James', 25, 'male', 'USA'),
-  ('Leila', 32, 'female', 'France'),
-  ('Brigitte', 35, 'female', 'England'),
-  ('Mike', 40, 'male', 'Denmark'),
-  ('Elizabeth', 21, 'female', 'Canada');
+  ('James', "Dean", 1972, 60000),
+  ('Ala', "Dean", 1974, 70000);
 """
-
-execute_query(connection, create_users)
-
-create_posts = """
-INSERT INTO
-  posts (title, description, user_id)
-VALUES
-  ("Happy", "I am feeling very happy today", 1),
-  ("Hot Weather", "The weather is very hot today", 2),
-  ("Help", "I need some help with my work", 2),
-  ("Great News", "I am getting married", 1),
-  ("Interesting Game", "It was a fantastic game of tennis", 5),
-  ("Party", "Anyone up for a late-night party today?", 3);
-"""
-
-execute_query(connection, create_posts)
-
-create_comments = """
-INSERT INTO
-  comments (text, user_id, post_id)
-VALUES
-  ('Count me in', 1, 6),
-  ('What sort of help?', 5, 3),
-  ('Congrats buddy', 2, 4),
-  ('I was rooting for Nadal though', 4, 5),
-  ('Help with your thesis?', 2, 3),
-  ('Many congratulations', 5, 4);
-"""
-
-create_likes = """
-INSERT INTO
-  likes (user_id, post_id)
-VALUES
-  (1, 6),
-  (2, 3),
-  (1, 5),
-  (5, 4),
-  (2, 4),
-  (4, 2),
-  (3, 6);
-"""
-
-execute_query(connection, create_comments)
-execute_query(connection, create_likes)
-
-
+#
+execute_query(connection, create_pracownicy)
+#
+# create_posts = """
+# INSERT INTO
+#   posts (title, description, user_id)
+# VALUES
+#   ("Happy", "I am feeling very happy today", 1),
+#   ("Hot Weather", "The weather is very hot today", 2),
+#   ("Help", "I need some help with my work", 2),
+#   ("Great News", "I am getting married", 1),
+#   ("Interesting Game", "It was a fantastic game of tennis", 5),
+#   ("Party", "Anyone up for a late-night party today?", 3);
+# """
+#
+# # execute_query(connection, create_posts)
+#
+# create_comments = """
+# INSERT INTO
+#   comments (text, user_id, post_id)
+# VALUES
+#   ('Count me in', 1, 6),
+#   ('What sort of help?', 5, 3),
+#   ('Congrats buddy', 2, 4),
+#   ('I was rooting for Nadal though', 4, 5),
+#   ('Help with your thesis?', 2, 3),
+#   ('Many congratulations', 5, 4);
+# """
+#
+# create_likes = """
+# INSERT INTO
+#   likes (user_id, post_id)
+# VALUES
+#   (1, 6),
+#   (2, 3),
+#   (1, 5),
+#   (5, 4),
+#   (2, 4),
+#   (4, 2),
+#   (3, 6);
+# """
+#
+# # execute_query(connection, create_comments)
+# # execute_query(connection, create_likes)
+#
+#
 def execute_read_query(connection, query):
     cursor = connection.cursor()
     result = None
@@ -132,32 +128,35 @@ def execute_read_query(connection, query):
     except Error as e:
         print(f"The error '{e}' occurred")
 
-select_users = "SELECT * from users"
-users = execute_read_query(connection, select_users)
+select_users = "SELECT * from pracownicy"
+pracownicy = execute_read_query(connection, select_users)
 
-for user in users:
-    print(user)
+print(pracownicy)
 
-select_posts = "SELECT * FROM posts"
-posts = execute_read_query(connection, select_posts)
-
-for post in posts:
-    print(post)
-
-# JOIN
-
-
-select_users_posts = """
-SELECT
-  users.id,
-  users.name,
-  posts.description
-FROM
-  posts
-  INNER JOIN users ON users.id = posts.user_id
-"""
-
-users_posts = execute_read_query(connection, select_users_posts)
-
-for users_post in users_posts:
-    print(users_post)
+#
+# for user in users:
+#     print(user)
+#
+# # select_posts = "SELECT * FROM posts"
+# # posts = execute_read_query(connection, select_posts)
+#
+# for post in posts:
+#     print(post)
+#
+# # JOIN
+#
+#
+# select_users_posts = """
+# SELECT
+#   users.id,
+#   users.name,
+#   posts.description
+# FROM
+#   posts
+#   INNER JOIN users ON users.id = posts.user_id
+# """
+#
+# users_posts = execute_read_query(connection, select_users_posts)
+#
+# for users_post in users_posts:
+#     print(users_post)
