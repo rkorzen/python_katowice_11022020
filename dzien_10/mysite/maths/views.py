@@ -35,13 +35,15 @@ def div(request, a, b):
         {"result": result}
     )
 
+
 def mul(request, a, b):
     result = a * b
     return render(
         request,
-        'maths/result.html',
+        'maths/lista.html',
         {"result": result}
     )
+
 
 def sqrt(request, a):
     result = math.sqrt(a)
@@ -50,10 +52,21 @@ def sqrt(request, a):
         'maths/result.html',
         {"result": result}
     )
+
+
 def pow_view(request, a, b):
     result = a ** b
     return render(
         request,
         'maths/result.html',
         {"result": result}
+    )
+
+
+def lista_elementow(request):
+    elementy = [1, 2, 3, 4, 5, 6, 'a']
+    return render(
+        request,
+        'maths/lista.html',
+        {"elements": elementy}
     )
