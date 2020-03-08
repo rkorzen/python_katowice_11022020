@@ -55,3 +55,7 @@ by pobrać
     Maths.objects.last()
     Maths.objects.get(<kolumna>=<wartosc>)
     Maths.objects.filter(<kolumna>=<wartosc>)
+    
+## Tworzenie admina
+
+    python manage.py createsuperuser

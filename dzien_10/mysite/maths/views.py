@@ -3,10 +3,13 @@ import math
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from maths.models import Math
+
 
 # Create your views here.
 
 def add(request, a, b):
+    Math.objects.create(operation="add", a=a, b=b)
     result = a + b
     return render(
         request,
@@ -16,6 +19,7 @@ def add(request, a, b):
 
 
 def sub(request, a, b):
+    Math.objects.create(operation="sub", a=a, b=b)
     result = a - b
     return render(
         request,
@@ -28,6 +32,7 @@ def div(request, a, b):
     if b == 0:
         result = "Nie można dzielić przez 0"
     else:
+        Math.objects.create(operation="div", a=a, b=b)
         result = a / b
     return render(
         request,
@@ -37,6 +42,7 @@ def div(request, a, b):
 
 
 def mul(request, a, b):
+    Math.objects.create(operation="mul", a=a, b=b)
     result = a * b
     return render(
         request,
@@ -46,6 +52,7 @@ def mul(request, a, b):
 
 
 def sqrt(request, a):
+    Math.objects.create(operation="sqrt", a=a)
     result = math.sqrt(a)
     return render(
         request,
@@ -55,6 +62,7 @@ def sqrt(request, a):
 
 
 def pow_view(request, a, b):
+    Math.objects.create(operation="pow", a=a, b=b)
     result = a ** b
     return render(
         request,
@@ -64,7 +72,7 @@ def pow_view(request, a, b):
 
 
 def lista_elementow(request):
-    elementy = [1, 2, 3, 4, 5, 6, 'a']
+    elementy = Math.objects.all()
     return render(
         request,
         'maths/lista.html',

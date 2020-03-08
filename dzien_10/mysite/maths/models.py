@@ -8,3 +8,5 @@ class Math(models.Model):
     b = models.IntegerField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"Math: {self.id} | {self.operation}"
